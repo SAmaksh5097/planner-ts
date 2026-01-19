@@ -15,12 +15,12 @@ const Form = () => {
         }
     },[editingTask])
 
-    const handlechange = (e)=>{
+    const handlechange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)=>{
         const { id, value } = e.target;
         setFormData(prev => ({ ...prev, [id]: value }));
     }
 
-    const handlesubmit = (e)=>{
+    const handlesubmit = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         if(editingTask){
             updatetask(editingTask.id, formdata)

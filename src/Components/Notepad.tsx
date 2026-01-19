@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const Notepad = () => {
     const [data,setData] = useState(localStorage.getItem("data")||"")
-    const handleChange = (e)=>{
+    const handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>)=>{
         setData(e.target.value)
     }
     useEffect(()=>{
