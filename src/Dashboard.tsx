@@ -1,4 +1,3 @@
-import React from 'react'
 import SideBar from './SideBar'
 import PlannerGrid from './PlannerGrid'
 import QuickActions from './QuickActions'

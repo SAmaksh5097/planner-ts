@@ -1,8 +1,10 @@
 import React, { useContext, useMemo } from 'react'
-import { PlannerContext } from '../Context/PlannerContext'
-
-const Focus = ({ tasks }) => {
-    const { options } = useContext(PlannerContext)
+import { PlannerContext, Task } from '../Context/PlannerContext'
+interface Props{
+    tasks: Task[]
+}
+const Focus: React.FC<Props> = ({tasks}) => {
+    const { options } = useContext(PlannerContext)!
 
     const categoryData = useMemo(() => {
         const completedTasks = tasks.filter(t => t.status === 'completed')
@@ -10,7 +12,6 @@ const Focus = ({ tasks }) => {
 
         if (total === 0) return []
 
-        let startAngle = 0
         
         return options.map(opt => {
             const count = completedTasks.filter(t => t.category === opt.name).length

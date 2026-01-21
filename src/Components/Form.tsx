@@ -1,9 +1,9 @@
 import { X } from 'lucide-react'
 import React, { useContext, useEffect, useState } from 'react'
-import { PlannerContext } from '../Context/PlannerContext'
+import { PlannerContext} from '../Context/PlannerContext'
 
 const Form = () => {
-    const {addtask, setIsFormOpen, selectedDate, editingTask, setEditingTask, updatetask, options } = useContext(PlannerContext)
+    const {addtask, setIsFormOpen, selectedDate, editingTask, setEditingTask, updatetask, options } = useContext(PlannerContext)!
 
     const [formdata, setFormData] = useState({
         title:'', start:'',end:'',date:selectedDate,note:'',category:'Work'
@@ -11,7 +11,8 @@ const Form = () => {
 
     useEffect(()=>{
         if(editingTask){
-            setFormData(editingTask)
+            const {id,status,...data} = editingTask
+            setFormData(data)
         }
     },[editingTask])
 

@@ -1,6 +1,11 @@
-import React from 'react'
 import { motion } from 'framer-motion';
-const MetricCard = (props) => {
+interface Props{
+    total: number
+    completed: number
+    name: string
+    heading: string
+}
+const MetricCard = (props:Props) => {
     const tot = props.total;
     const com = props.completed;
     const per = tot===0?0:Math.round((com/tot)*100);

@@ -1,16 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { MapPin, Sun, MoonStar } from 'lucide-react'
 import axios from 'axios'
-
+interface WeatherAPI{
+    current:{
+        temperature_2m: number
+        wind_speed_10m: number
+        cloud_cover: number
+        relative_humidity_2m: number
+        is_day: number
+        apparent_temperature: number;
+        surface_pressure: number;
+    };
+}
+interface Coords{
+    lat: number
+    lon: number
+}
 const Weather = () => {
 
-    const [coords, setCoords] = useState({lat: 28.6519, lon: 77.2315})
-    const [data, setData] = useState({})
-    const [temp, setTemp] = useState('Getting data...')
 
-    const getdata = async (lat = coords.lat, lon = coords.lon) => {
+    const [coords, setCoords] = useState<Coords>({lat: 28.6519, lon: 77.2315})
+    const [data, setData] = useState<WeatherAPI|null>(null)
+    const [temp, setTemp] = useState<number|string>('Getting data...')
+
+    const getdata = async (lat:number = coords.lat, lon:number = coords.lon) => {
         try {
-            const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,wind_speed_10m,cloud_cover&current=temperature_2m,relative_humidity_2m,is_day,apparent_temperature,wind_speed_10m,cloud_cover,surface_pressure&timezone=auto`)
+            const response = await axios.get<WeatherAPI>(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,wind_speed_10m,cloud_cover&current=temperature_2m,relative_humidity_2m,is_day,apparent_temperature,wind_speed_10m,cloud_cover,surface_pressure&timezone=auto`)
             setData(response.data)
             setTemp(response.data.current.temperature_2m)
         } catch (error) {

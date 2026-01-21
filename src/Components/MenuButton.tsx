@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import { PlannerContext } from '../Context/PlannerContext';
-const MenuButton = (props) => {
+interface Props{
+  name:string
+}
+const MenuButton: React.FC<Props> = (props:Props) => {
     const menu = props.name;
-    const {selected, setSelected} = useContext(PlannerContext)
+    const {selected, setSelected} = useContext(PlannerContext)!
     
     const handlechange = ()=>{
         setSelected(menu.toLowerCase());

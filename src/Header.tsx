@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import  { useContext, useEffect } from 'react'
 import ThemeToggle from './Components/ThemeToggle'
 import {CalendarCheck2} from 'lucide-react'
 import MenuButton from './Components/MenuButton'
 import { Link, useLocation } from 'react-router-dom'
 import { PlannerContext } from './Context/PlannerContext'
 const Header = () => {
-  const {setSelected} = useContext(PlannerContext)
+  const {setSelected} = useContext(PlannerContext)!
   const location = useLocation()
   useEffect(()=>{
     if(location.pathname==='/analytics'){

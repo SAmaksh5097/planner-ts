@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { PlannerContext } from '../Context/PlannerContext'
-import {motion, progress} from 'framer-motion'
+import {motion} from 'framer-motion'
 const ProductivityDial = () => {
-    const {tasks, selectedDate} = useContext(PlannerContext);
+    const {tasks, selectedDate} = useContext(PlannerContext)!
     const total = tasks.filter(task=>task.date===selectedDate).length;
     const completed = tasks.filter(task=>task.status==='completed' && task.date===selectedDate).length
 

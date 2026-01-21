@@ -1,9 +1,19 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-
-const WeeklyProgress = ({tasks}) => {
+import {Task} from '../Context/PlannerContext'
+interface Props{
+    tasks: Task[]
+    startDate: string
+    endDate: string
+}
+const WeeklyProgress: React.FC<Props> = ({tasks}) => {
+    interface Details{
+        completed: number
+        pending: number
+        total: number
+    }
     const chartData = useMemo(()=>{
-        const bucket = {
+        const bucket:Record<string,Details>= {
             'Mon':{completed:0,pending:0,total:0},
             'Tue':{completed:0,pending:0,total:0},
             'Wed':{completed:0,pending:0,total:0},

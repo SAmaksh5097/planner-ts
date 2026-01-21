@@ -4,7 +4,7 @@ import { ListPlus } from 'lucide-react'
 import { PlannerContext } from './Context/PlannerContext'
 
 const QuickActions = () => {
-  const {setIsFormOpen, isFormOpen, setEditingTask} = useContext(PlannerContext)
+  const {setIsFormOpen, setEditingTask} = useContext(PlannerContext)!
 
   const handleclick = ()=>{
     setIsFormOpen(true)

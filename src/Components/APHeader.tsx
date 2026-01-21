@@ -1,7 +1,11 @@
-import { Calendar, ChartColumn } from 'lucide-react'
-import React from 'react'
-
-const APHeader = ({ startDate, setStartDate, endDate, setEndDate }) => {
+import {  ChartColumn } from 'lucide-react'
+interface Props{
+    startDate: string
+    setStartDate:React.Dispatch<React.SetStateAction<string>>
+    setEndDate:React.Dispatch<React.SetStateAction<string>>
+    endDate: string
+}
+const APHeader = ({ startDate, setStartDate, endDate, setEndDate }:Props) => {
   return (
     <div className='border-b pb-4 border-slate-200 dark:border-gray-600 transition-colors'>
         <div className='flex gap-4 items-center text-sm font-bold text-slate-400'> 
